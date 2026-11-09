@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Daboul Jordan Residence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Manrope:wght@200;300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #f5f1ed;
+    --bg-deep: #ece6dd;
+    --card: #efeae3;
+    --accent: #8b6f3d;
+    --accent-soft: #b89868;
+    --ink: #2c2a28;
+    --ink-soft: #6b665e;
+    --line: #5a4a2e;
+    --shadow: 0 30px 80px -20px rgba(44, 42, 40, 0.18);
+    --shadow-soft: 0 8px 30px -10px rgba(44, 42, 40, 0.12);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Manrope', sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' /%3E%3C/svg%3E");
+  }
+
+  .site-header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 50;
+    padding: 1.4rem 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(to bottom, rgba(245,241,237,0.95) 0%, rgba(245,241,237,0) 100%);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  .site-header::after {
+    content: '';
+    position: absolute;
+    left: 2.5rem; right: 2.5rem; bottom: 0;
+    height: 1px;
+    background: var(--line);
+    opacity: 0.4;
+  }
+  .brand { display: flex; align-items: center; gap: 0.75rem; }
+  .brand img { height: 64px; width: auto; }
+  .brand-text {
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    border-left: 1px solid var(--line);
+    padding-left: 0.85rem;
+    line-height: 1.4;
+  }
+  .brand-text strong { display: block; color: var(--ink); font-weight: 600; font-size: 0.78rem; }
+  .header-meta { font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--ink-soft); }
+  .header-meta span { color: var(--accent); font-weight: 500; }
+
+  .hero {
+    min-height: 100vh;
+    padding: 8rem 2.5rem 4rem;
+    display: grid;
+    grid-template-columns: minmax(280px, 380px) 1fr;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+  }
+  .hero-side { position: sticky; top: 8rem; align-self: start; }
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.4rem;
+    font-weight: 500;
+  }
+  .hero-tag::before { content: ''; width: 32px; height: 1px; background: var(--accent); }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(2.6rem, 5vw, 4.4rem);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+  .hero-title em { font-style: italic; color: var(--accent); font-weight: 400; }
+  .hero-sub {
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    max-width: 36ch;
+  }
+  .hero-instructions {
+    display: flex; flex-direction: column; gap: 0.6rem;
+    padding: 1.25rem 1.4rem;
+    background: var(--card);
+    border-left: 2px solid var(--accent);
+    margin-bottom: 2rem;
+  }
+  .hero-instructions span {
+    display: flex; align-items: center; gap: 0.7rem;
+    font-size: 0.78rem; color: var(--ink); letter-spacing: 0.05em;
+  }
+  .hero-instructions span::before {
+    content: ''; width: 6px; height: 6px;
+    background: var(--accent); border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .scroll-cue {
+    font-size: 0.65rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+  }
+  .scroll-cue::after {
+    content: ''; width: 60px; height: 1px; background: var(--ink-soft);
+    animation: scrollPulse 2.5s ease-in-out infinite;
+  }
+  @keyframes scrollPulse {
+    0%, 100% { transform: scaleX(1); opacity: 0.5; }
+    50% { transform: scaleX(1.4); opacity: 1; }
+  }
+
+  /* === PLAN SLIDER (çok katlı) === */
+  .plan-slider { position: relative; width: 100%; margin-left: auto; }
+  .plan-viewport { position: relative; width: 100%; }
+  .plan-slide { display: none; }
+  .plan-slide.active { display: block; animation: fadeUp 0.6s cubic-bezier(0.2, 0.8, 0.3, 1) backwards; }
+  .plan-stage {
+    position: relative;
+    width: 100%;
+    max-height: 80vh;
+    margin-left: auto;
+  }
+  .plan-img {
+    width: 100%; height: auto;
+    max-height: 80vh;
+    object-fit: contain;
+    display: block;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+  .hotspots { position: absolute; inset: 0; }
+
+  .plan-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.2rem;
+    margin-top: 1.4rem;
+  }
+  .plan-nav.hidden { display: none; }
+  .plan-arrow {
+    background: transparent;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.1rem;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+  }
+  .plan-arrow:hover { background: var(--accent); color: var(--bg); }
+  .plan-floor-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.3rem;
+    color: var(--ink);
+    min-width: 8ch;
+    text-align: center;
+  }
+  .plan-floor-label span {
+    display: block;
+    font-family: 'Manrope', sans-serif;
+    font-style: normal;
+    font-size: 0.6rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.2rem;
+  }
+  .plan-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.6rem;
+    margin-top: 1rem;
+  }
+  .plan-dots.hidden { display: none; }
+  .plan-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    border: 1px solid var(--accent);
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.3s ease;
+  }
+  .plan-dot.active { background: var(--accent); transform: scale(1.25); }
+
+  /* === BEACON === */
+  .beacon {
+    position: absolute;
+    width: 0; height: 0;
+    cursor: pointer;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+  }
+  .beacon::before {
+    content: '';
+    position: absolute;
+    left: 50%; top: 50%;
+    width: 14px; height: 14px;
+    transform: translate(-50%, -50%);
+    background: var(--accent);
+    border: 2px solid var(--bg);
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(44, 42, 40, 0.25);
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.3, 1);
+    z-index: 2;
+  }
+  .beacon::after {
+    content: '';
+    position: absolute;
+    left: 50%; top: 50%;
+    width: 14px; height: 14px;
+    transform: translate(-50%, -50%);
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+    opacity: 0.6;
+    animation: beaconPulse 2.4s cubic-bezier(0.2, 0.8, 0.3, 1) infinite;
+    z-index: 1;
+  }
+  @keyframes beaconPulse {
+    0% { width: 14px; height: 14px; opacity: 0.7; }
+    100% { width: 50px; height: 50px; opacity: 0; }
+  }
+  .beacon:hover::before {
+    width: 22px; height: 22px;
+    background: var(--ink);
+    box-shadow: 0 4px 14px rgba(44, 42, 40, 0.4);
+  }
+  .beacon:hover::after { animation-play-state: paused; opacity: 0; }
+
+  .beacon-tooltip {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -180%) scale(0.9);
+    background: var(--ink);
+    color: var(--bg);
+    padding: 0.55rem 1.1rem;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.3, 1);
+    pointer-events: none;
+    box-shadow: 0 12px 32px -8px rgba(44, 42, 40, 0.4);
+    z-index: 3;
+  }
+  .beacon-tooltip::after {
+    content: '';
+    position: absolute;
+    left: 50%; bottom: -5px;
+    transform: translateX(-50%) rotate(45deg);
+    width: 10px; height: 10px;
+    background: var(--ink);
+  }
+  .beacon-tooltip-num {
+    color: var(--accent-soft);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+    margin-right: 0.5rem;
+    text-transform: none;
+    font-size: 0.85rem;
+    letter-spacing: 0;
+    vertical-align: -1px;
+  }
+  .beacon:hover .beacon-tooltip {
+    opacity: 1;
+    transform: translate(-50%, -210%) scale(1);
+  }
+
+  .room-index {
+    padding: 6rem 2.5rem;
+    background: var(--bg-deep);
+    position: relative;
+  }
+  .room-index::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 2.5rem; right: 2.5rem;
+    height: 1px;
+    background: var(--line);
+    opacity: 0.4;
+  }
+  .index-header {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    margin-bottom: 4rem;
+  }
+  .index-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    line-height: 1;
+    letter-spacing: -0.01em;
+  }
+  .index-title em { font-style: italic; color: var(--accent); }
+  .index-meta {
+    font-size: 0.7rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .room-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  .room-card {
+    background: var(--bg);
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    font-family: inherit;
+    transition: all 0.5s cubic-bezier(0.2, 0.8, 0.3, 1);
+    overflow: hidden;
+    position: relative;
+    box-shadow: var(--shadow-soft);
+  }
+  .room-card-img {
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    position: relative;
+    background: var(--card);
+  }
+  .room-card-img img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.3, 1);
+  }
+  .room-card:hover .room-card-img img { transform: scale(1.06); }
+  .room-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+  .room-card-floor {
+    position: absolute;
+    top: 0.9rem; left: 0.9rem;
+    background: rgba(44, 42, 40, 0.82);
+    color: var(--bg);
+    font-size: 0.58rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.7rem;
+    font-weight: 500;
+    z-index: 2;
+  }
+  .room-card-body { padding: 1.5rem 1.4rem 1.6rem; position: relative; }
+  .room-card-num {
+    position: absolute;
+    top: -1.2rem; right: 1.4rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.4rem;
+    color: var(--accent);
+    background: var(--bg);
+    padding: 0 0.6rem;
+    line-height: 1;
+    font-weight: 300;
+    font-style: italic;
+  }
+  .room-card-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    margin-bottom: 0.9rem;
+    letter-spacing: 0.01em;
+  }
+  .room-card-meta {
+    display: flex;
+    gap: 1.2rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    align-items: center;
+  }
+  .room-card-meta strong { color: var(--accent); font-weight: 500; }
+  .room-card-arrow {
+    position: absolute;
+    bottom: 1.6rem; right: 1.4rem;
+    width: 34px; height: 34px;
+    border: 1px solid var(--accent);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--accent);
+    transition: all 0.4s ease;
+    font-size: 1rem;
+  }
+  .room-card:hover .room-card-arrow {
+    background: var(--accent);
+    color: var(--bg);
+    transform: rotate(-45deg);
+  }
+
+  /* MODAL */
+  .modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(20, 18, 15, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 200;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    overflow-y: auto;
+  }
+  .modal.open { display: block; opacity: 1; }
+  .modal-inner { min-height: 100%; padding: 2rem; display: flex; flex-direction: column; }
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(245,241,237,0.15);
+    margin-bottom: 2rem;
+  }
+  .modal-title-block { color: var(--bg); }
+  .modal-eyebrow {
+    font-size: 0.65rem;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    color: var(--accent-soft);
+    margin-bottom: 0.6rem;
+    font-weight: 500;
+  }
+  .modal-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+  .modal-tr {
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(245,241,237,0.55);
+  }
+  .modal-close {
+    background: transparent;
+    border: 1px solid rgba(245,241,237,0.3);
+    color: var(--bg);
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+  }
+  .modal-close:hover {
+    background: var(--bg);
+    color: var(--ink);
+    border-color: var(--bg);
+    transform: rotate(90deg);
+  }
+  .modal-content {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 2rem;
+    flex: 1;
+  }
+  .modal-sidebar { color: var(--bg); }
+  .modal-plan {
+    background: var(--card);
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow);
+  }
+  .modal-plan img { width: 100%; display: block; }
+  .modal-plan-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--accent-soft);
+    margin-top: 0.8rem;
+    text-align: center;
+  }
+  .modal-tabs { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.5rem; }
+  .modal-tab {
+    background: rgba(245,241,237,0.04);
+    border: 1px solid rgba(245,241,237,0.12);
+    color: var(--bg);
+    padding: 0.85rem 1.1rem;
+    text-align: left;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .modal-tab:hover { border-color: var(--accent); background: rgba(139,111,61,0.1); }
+  .modal-tab.active { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+  .modal-tab-count { font-size: 0.7rem; opacity: 0.7; }
+  .modal-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1rem;
+    align-content: start;
+  }
+  .gallery-item {
+    cursor: zoom-in;
+    overflow: hidden;
+    background: var(--card);
+    aspect-ratio: 4/3;
+    position: relative;
+  }
+  .gallery-item img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.3, 1);
+    display: block;
+  }
+  .gallery-item:hover img { transform: scale(1.04); }
+
+  /* LIGHTBOX - CREAM THEME */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(245, 241, 237, 0.97);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 300;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .lightbox.open { display: flex; opacity: 1; }
+  .lightbox img {
+    max-width: 92vw;
+    max-height: 88vh;
+    object-fit: contain;
+    box-shadow: 0 30px 100px -10px rgba(44, 42, 40, 0.35);
+  }
+  .lightbox-close, .lightbox-prev, .lightbox-next {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    display: flex; align-items: center; justify-content: center;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+  .lightbox-close:hover, .lightbox-prev:hover, .lightbox-next:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--bg);
+  }
+  .lightbox-close { top: 2rem; right: 2rem; }
+  .lightbox-prev { left: 2rem; top: 50%; transform: translateY(-50%); }
+  .lightbox-next { right: 2rem; top: 50%; transform: translateY(-50%); }
+  .lightbox-counter {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%; transform: translateX(-50%);
+    color: var(--ink-soft);
+    font-size: 0.75rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+  }
+  .lightbox-counter span { color: var(--accent); font-weight: 500; }
+
+  .site-footer {
+    padding: 5rem 2.5rem 3rem;
+    background: var(--ink);
+    color: var(--bg);
+    text-align: center;
+  }
+  .site-footer img {
+    height: 130px;
+    margin-bottom: 2rem;
+    filter: invert(1) brightness(2);
+  }
+  .footer-tag {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+  }
+  .footer-tag em { color: var(--accent-soft); font-style: italic; }
+  .footer-meta {
+    font-size: 0.7rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: rgba(245,241,237,0.45);
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(245,241,237,0.1);
+  }
+
+  @media (max-width: 980px) {
+    .hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 3rem; }
+    .hero-side { position: static; }
+    .modal-content { grid-template-columns: 1fr; }
+    .modal-sidebar { order: 2; }
+    .site-header { padding: 1rem 1.25rem; }
+    .room-index { padding: 4rem 1.5rem; }
+    .index-header { flex-direction: column; gap: 1rem; align-items: start; }
+  }
+  @media (max-width: 640px) {
+    .modal-inner { padding: 1.25rem; }
+    .modal-gallery { grid-template-columns: 1fr; }
+    .lightbox-prev { left: 1rem; }
+    .lightbox-next { right: 1rem; }
+    .brand-text { display: none; }
+    .brand img { height: 52px; }
+    .plan-arrow { width: 40px; height: 40px; }
+  }
+
+  .fade-in { animation: fadeUp 0.8s cubic-bezier(0.2, 0.8, 0.3, 1) backwards; }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="brand">
+    <img src="images/logo.png" alt="My Home Architecture" />
+    <div class="brand-text">
+      <strong>MY HOME ARCHITECTURE</strong>
+      Interior · Architecture · Design
+    </div>
+  </div>
+  <div class="header-meta"><span>DABOUL JORDAN RESIDENCE</span> &nbsp;·&nbsp; PRESENTATION 2026</div>
+</header>
+
+<section class="hero" id="hero">
+  <div class="hero-side">
+    <div class="hero-tag">Concept Presentation</div>
+    <h1 class="hero-title">Daboul Jordan<br /><em>Residence</em></h1>
+    <p class="hero-sub">A residence composed of thoughtfully designed spaces. Explore each room through the floor plan — every space opens onto its own atmosphere, materials and light.</p>
+    <div class="hero-instructions">
+      <span>Hover over the points to see each room</span>
+      <span>Click any point to open its gallery</span>
+      <span>Or scroll down for all spaces</span>
+    </div>
+    <div class="scroll-cue">EXPLORE</div>
+  </div>
+  <div class="plan-slider" id="planSlider">
+    <div class="plan-viewport" id="planViewport"></div>
+    <div class="plan-nav" id="planNav">
+      <button class="plan-arrow" id="planPrev" aria-label="Previous floor">‹</button>
+      <div class="plan-floor-label" id="planFloorLabel"></div>
+      <button class="plan-arrow" id="planNext" aria-label="Next floor">›</button>
+    </div>
+    <div class="plan-dots" id="planDots"></div>
+  </div>
+</section>
+
+<section class="room-index" id="rooms">
+  <div class="index-header">
+    <h2 class="index-title">All <em>Spaces</em></h2>
+    <div class="index-meta" id="indexMeta"></div>
+  </div>
+  <div class="room-grid" id="roomGrid"></div>
+</section>
+
+<footer class="site-footer">
+  <img src="images/logo.png" alt="My Home Architecture" />
+  <div class="footer-tag"><em>Daboul Jordan</em> · Residence</div>
+  <div class="footer-tag" style="font-size: 0.95rem; opacity: 0.7;">Concept Presentation 2026</div>
+  <div class="footer-meta">My Home Architecture &nbsp;·&nbsp; Interior · Architecture · Design</div>
+</footer>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true">
+  <div class="modal-inner">
+    <div class="modal-header">
+      <div class="modal-title-block">
+        <div class="modal-eyebrow" id="modalEyebrow">Space</div>
+        <h3 class="modal-title" id="modalTitle">Room Name</h3>
+      </div>
+      <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
+    </div>
+    <div class="modal-content">
+      <aside class="modal-sidebar">
+        <div class="modal-plan" id="modalPlanWrap">
+          <img id="modalPlan" src="" alt="Room plan" />
+          <div class="modal-plan-label">FLOOR PLAN</div>
+        </div>
+        <div class="modal-tabs" id="modalTabs"></div>
+      </aside>
+      <main class="modal-gallery" id="modalGallery"></main>
+    </div>
+  </div>
+</div>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lbClose">✕</button>
+  <button class="lightbox-prev" id="lbPrev">‹</button>
+  <button class="lightbox-next" id="lbNext">›</button>
+  <img id="lbImg" src="" alt="" />
+  <div class="lightbox-counter"><span id="lbIdx">1</span> / <span id="lbTotal">1</span></div>
+</div>
+
+<script>
+// === KAT VERİSİ (generate.py tarafından dolduruldu) ===
+const FLOORS = [{"name": "Main Floor", "plan": "images/main_floor/kat_plani.png", "rooms": ["main_floor__01_main_entrance", "main_floor__02_entrance_hall", "main_floor__03_guest_entrance", "main_floor__04_living_room", "main_floor__05_kitchen", "main_floor__06_common_wc", "main_floor__07_guest_salon", "main_floor__08_guest_wc", "main_floor__09_master_bedroom", "main_floor__10_zenah_s_room", "main_floor__11_guest_bedroom", "main_floor__12_laundry_room"]}, {"name": "Roof Terrace", "plan": "images/roof_terrace/kat_plani.png", "rooms": ["roof_terrace__13_men_s_terrace", "roof_terrace__14_women_s_terrace"]}];
+// === ODA VERİSİ (generate.py tarafından dolduruldu) ===
+const DATA = [{"slug": "main_floor__01_main_entrance", "num": "01", "name_tr": "Main Entrance", "floor": 0, "plan": null, "images": ["images/main_floor/01_main_entrance/img_01.jpeg", "images/main_floor/01_main_entrance/img_02.jpeg"], "subs": [], "beacon": {"x": 0.49, "y": 0.36}}, {"slug": "main_floor__02_entrance_hall", "num": "02", "name_tr": "Entrance Hall", "floor": 0, "plan": "images/main_floor/02_entrance_hall/plan.png", "images": ["images/main_floor/02_entrance_hall/img_01.png", "images/main_floor/02_entrance_hall/img_02.png"], "subs": [], "beacon": {"x": 0.62, "y": 0.55}}, {"slug": "main_floor__03_guest_entrance", "num": "03", "name_tr": "Guest Entrance", "floor": 0, "plan": "images/main_floor/03_guest_entrance/plan.png", "images": ["images/main_floor/03_guest_entrance/img_01.png", "images/main_floor/03_guest_entrance/img_02.png"], "subs": [], "beacon": {"x": 0.39, "y": 0.49}}, {"slug": "main_floor__04_living_room", "num": "04", "name_tr": "Living Room", "floor": 0, "plan": "images/main_floor/04_living_room/plan.png", "images": ["images/main_floor/04_living_room/img_01.png", "images/main_floor/04_living_room/img_02.jpeg"], "subs": [], "beacon": {"x": 0.72, "y": 0.4}}, {"slug": "main_floor__05_kitchen", "num": "05", "name_tr": "Kitchen", "floor": 0, "plan": "images/main_floor/05_kitchen/plan.png", "images": ["images/main_floor/05_kitchen/img_01.jpeg", "images/main_floor/05_kitchen/img_02.jpeg", "images/main_floor/05_kitchen/img_03.jpeg"], "subs": [{"slug": "dirty_kitchen", "name_tr": "Dirty Kitchen", "images": ["images/main_floor/05_kitchen/dirty_kitchen/img_01.jpeg", "images/main_floor/05_kitchen/dirty_kitchen/img_02.jpeg", "images/main_floor/05_kitchen/dirty_kitchen/img_03.jpeg"]}], "beacon": {"x": 0.84, "y": 0.8}}, {"slug": "main_floor__06_common_wc", "num": "06", "name_tr": "Common WC", "floor": 0, "plan": "images/main_floor/06_common_wc/plan.png", "images": ["images/main_floor/06_common_wc/img_01.png"], "subs": [], "beacon": {"x": 0.73, "y": 0.54}}, {"slug": "main_floor__07_guest_salon", "num": "07", "name_tr": "Guest Salon", "floor": 0, "plan": "images/main_floor/07_guest_salon/plan.png", "images": ["images/main_floor/07_guest_salon/img_01.jpeg", "images/main_floor/07_guest_salon/img_02.jpeg", "images/main_floor/07_guest_salon/img_03.jpeg", "images/main_floor/07_guest_salon/img_04.jpeg", "images/main_floor/07_guest_salon/img_05.jpeg", "images/main_floor/07_guest_salon/img_06.jpeg", "images/main_floor/07_guest_salon/img_07.jpeg", "images/main_floor/07_guest_salon/img_08.jpeg"], "subs": [], "beacon": {"x": 0.29, "y": 0.29}}, {"slug": "main_floor__08_guest_wc", "num": "08", "name_tr": "Guest WC", "floor": 0, "plan": "images/main_floor/08_guest_wc/plan.png", "images": ["images/main_floor/08_guest_wc/img_01.png", "images/main_floor/08_guest_wc/img_02.png", "images/main_floor/08_guest_wc/img_03.png", "images/main_floor/08_guest_wc/img_04.png", "images/main_floor/08_guest_wc/img_05.png", "images/main_floor/08_guest_wc/img_06.png"], "subs": [], "beacon": {"x": 0.32, "y": 0.49}}, {"slug": "main_floor__09_master_bedroom", "num": "09", "name_tr": "Master Bedroom", "floor": 0, "plan": "images/main_floor/09_master_bedroom/plan.png", "images": ["images/main_floor/09_master_bedroom/img_01.png", "images/main_floor/09_master_bedroom/img_02.png", "images/main_floor/09_master_bedroom/img_03.jpeg"], "subs": [{"slug": "bathroom", "name_tr": "Bathroom", "images": ["images/main_floor/09_master_bedroom/bathroom/img_01.jpeg", "images/main_floor/09_master_bedroom/bathroom/img_02.png"]}, {"slug": "dressing_room", "name_tr": "Dressing Room", "images": ["images/main_floor/09_master_bedroom/dressing_room/img_01.jpeg", "images/main_floor/09_master_bedroom/dressing_room/img_02.png"]}], "beacon": {"x": 0.1, "y": 0.3}}, {"slug": "main_floor__10_zenah_s_room", "num": "10", "name_tr": "Zenah's Room", "floor": 0, "plan": "images/main_floor/10_zenah_s_room/plan.png", "images": ["images/main_floor/10_zenah_s_room/img_01.png", "images/main_floor/10_zenah_s_room/img_02.png"], "subs": [{"slug": "bathroom", "name_tr": "Bathroom", "images": ["images/main_floor/10_zenah_s_room/bathroom/img_01.png"]}], "beacon": {"x": 0.11, "y": 0.71}}, {"slug": "main_floor__11_guest_bedroom", "num": "11", "name_tr": "Guest Bedroom", "floor": 0, "plan": "images/main_floor/11_guest_bedroom/plan.png", "images": ["images/main_floor/11_guest_bedroom/img_01.png", "images/main_floor/11_guest_bedroom/img_02.png"], "subs": [{"slug": "bathroom", "name_tr": "Bathroom", "images": ["images/main_floor/11_guest_bedroom/bathroom/img_01.jpeg"]}], "beacon": {"x": 0.33, "y": 0.71}}, {"slug": "main_floor__12_laundry_room", "num": "12", "name_tr": "Laundry Room", "floor": 0, "plan": "images/main_floor/12_laundry_room/plan.png", "images": ["images/main_floor/12_laundry_room/img_01.png", "images/main_floor/12_laundry_room/img_02.jpeg"], "subs": [], "beacon": {"x": 0.575, "y": 0.76}}, {"slug": "roof_terrace__13_men_s_terrace", "num": "13", "name_tr": "Men's Terrace", "floor": 1, "plan": "images/roof_terrace/13_men_s_terrace/plan.png", "images": ["images/roof_terrace/13_men_s_terrace/img_01.png", "images/roof_terrace/13_men_s_terrace/img_02.png", "images/roof_terrace/13_men_s_terrace/img_03.png", "images/roof_terrace/13_men_s_terrace/img_04.png", "images/roof_terrace/13_men_s_terrace/img_05.png", "images/roof_terrace/13_men_s_terrace/img_06.png", "images/roof_terrace/13_men_s_terrace/img_07.png", "images/roof_terrace/13_men_s_terrace/img_08.png", "images/roof_terrace/13_men_s_terrace/img_09.png"], "subs": [{"slug": "wc", "name_tr": "WC", "images": ["images/roof_terrace/13_men_s_terrace/wc/img_01.png", "images/roof_terrace/13_men_s_terrace/wc/img_02.png", "images/roof_terrace/13_men_s_terrace/wc/img_03.png"]}], "beacon": {"x": 0.215, "y": 0.35}}, {"slug": "roof_terrace__14_women_s_terrace", "num": "14", "name_tr": "Women's Terrace", "floor": 1, "plan": "images/roof_terrace/14_women_s_terrace/plan.png", "images": ["images/roof_terrace/14_women_s_terrace/img_01.png", "images/roof_terrace/14_women_s_terrace/img_02.png", "images/roof_terrace/14_women_s_terrace/img_03.png", "images/roof_terrace/14_women_s_terrace/img_04.png", "images/roof_terrace/14_women_s_terrace/img_05.png", "images/roof_terrace/14_women_s_terrace/img_06.png", "images/roof_terrace/14_women_s_terrace/img_07.png"], "subs": [{"slug": "wc", "name_tr": "WC", "images": ["images/roof_terrace/14_women_s_terrace/wc/img_01.png", "images/roof_terrace/14_women_s_terrace/wc/img_02.png"]}], "beacon": {"x": 0.78, "y": 0.46}}];
+
+let currentRoom = null;
+let currentSubKey = null;
+let currentImages = [];
+let lightboxIdx = 0;
+let activeFloor = 0;
+
+init();
+
+function init() {
+  buildPlanSlider();
+  buildRoomGrid();
+  setupModalEvents();
+  setupLightbox();
+  document.getElementById('indexMeta').textContent =
+    DATA.length + ' Spaces · Visual Index';
+}
+
+/* ---------- PLAN SLIDER ---------- */
+function buildPlanSlider() {
+  const viewport = document.getElementById('planViewport');
+  viewport.innerHTML = '';
+  FLOORS.forEach((floor, fIdx) => {
+    const slide = document.createElement('div');
+    slide.className = 'plan-slide' + (fIdx === 0 ? ' active' : '');
+    slide.setAttribute('data-floor', fIdx);
+    const stage = document.createElement('div');
+    stage.className = 'plan-stage';
+    const img = document.createElement('img');
+    img.className = 'plan-img';
+    img.src = floor.plan;
+    img.alt = floor.name + ' plan';
+    const hotspots = document.createElement('div');
+    hotspots.className = 'hotspots';
+    DATA.filter(r => r.floor === fIdx && r.beacon).forEach(room => {
+      const el = document.createElement('div');
+      el.className = 'beacon';
+      el.style.left = (room.beacon.x * 100) + '%';
+      el.style.top = (room.beacon.y * 100) + '%';
+      el.setAttribute('data-room', room.slug);
+      el.setAttribute('aria-label', room.name_tr);
+      el.innerHTML =
+        '<div class="beacon-tooltip"><span class="beacon-tooltip-num">' +
+        room.num + '</span>' + room.name_tr + '</div>';
+      el.addEventListener('click', () => openRoom(room.slug));
+      hotspots.appendChild(el);
+    });
+    stage.appendChild(img);
+    stage.appendChild(hotspots);
+    slide.appendChild(stage);
+    viewport.appendChild(slide);
+  });
+
+  const single = FLOORS.length <= 1;
+  document.getElementById('planNav').classList.toggle('hidden', single);
+  const dotsWrap = document.getElementById('planDots');
+  dotsWrap.classList.toggle('hidden', single);
+  dotsWrap.innerHTML = '';
+  if (!single) {
+    FLOORS.forEach((floor, fIdx) => {
+      const dot = document.createElement('button');
+      dot.className = 'plan-dot' + (fIdx === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', floor.name);
+      dot.addEventListener('click', () => goFloor(fIdx));
+      dotsWrap.appendChild(dot);
+    });
+    document.getElementById('planPrev').addEventListener('click', () => goFloor(activeFloor - 1));
+    document.getElementById('planNext').addEventListener('click', () => goFloor(activeFloor + 1));
+  }
+  updateFloorLabel();
+}
+
+function goFloor(idx) {
+  const n = FLOORS.length;
+  activeFloor = (idx + n) % n;
+  document.querySelectorAll('.plan-slide').forEach((s, i) => {
+    s.classList.toggle('active', i === activeFloor);
+  });
+  document.querySelectorAll('.plan-dot').forEach((d, i) => {
+    d.classList.toggle('active', i === activeFloor);
+  });
+  updateFloorLabel();
+}
+
+function updateFloorLabel() {
+  const label = document.getElementById('planFloorLabel');
+  if (!FLOORS.length) { label.textContent = ''; return; }
+  label.innerHTML = '<span>FLOOR ' + (activeFloor + 1) + ' / ' + FLOORS.length +
+    '</span>' + FLOORS[activeFloor].name;
+}
+
+/* ---------- ODA GRID ---------- */
+function buildRoomGrid() {
+  const grid = document.getElementById('roomGrid');
+  grid.innerHTML = '';
+  const showFloor = FLOORS.length > 1;
+  DATA.forEach((room, idx) => {
+    const totalImgs = room.images.length + room.subs.reduce((s, x) => s + x.images.length, 0);
+    const subCount = room.subs.length;
+    const card = document.createElement('button');
+    card.className = 'room-card fade-in';
+    card.style.animationDelay = (idx * 0.04) + 's';
+    const cover = room.images[0] || (room.subs[0] && room.subs[0].images[0]) || '';
+    const floorTag = showFloor && FLOORS[room.floor]
+      ? '<div class="room-card-floor">' + FLOORS[room.floor].name + '</div>' : '';
+    card.innerHTML =
+      '<div class="room-card-img">' + floorTag +
+        '<img src="' + cover + '" alt="' + room.name_tr + '" loading="lazy" /></div>' +
+      '<div class="room-card-body">' +
+        '<div class="room-card-num">' + room.num + '</div>' +
+        '<div class="room-card-name">' + room.name_tr + '</div>' +
+        '<div class="room-card-meta">' +
+          '<span><strong>' + totalImgs + '</strong> Images</span>' +
+          (subCount > 0 ? '<span><strong>' + (subCount + 1) + '</strong> Areas</span>' : '') +
+        '</div>' +
+        '<div class="room-card-arrow">→</div>' +
+      '</div>';
+    card.addEventListener('click', () => openRoom(room.slug));
+    grid.appendChild(card);
+  });
+}
+
+/* ---------- MODAL ---------- */
+function setupModalEvents() {
+  document.getElementById('modalClose').addEventListener('click', closeModal);
+  document.getElementById('modal').addEventListener('click', (e) => {
+    if (e.target.id === 'modal' || e.target.classList.contains('modal-inner')) closeModal();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      if (document.getElementById('lightbox').classList.contains('open')) closeLightbox();
+      else if (document.getElementById('modal').classList.contains('open')) closeModal();
+    }
+  });
+}
+
+function openRoom(slug) {
+  currentRoom = DATA.find(r => r.slug === slug);
+  if (!currentRoom) return;
+  currentSubKey = null;
+  renderModal();
+  const m = document.getElementById('modal');
+  m.style.display = 'block';
+  requestAnimationFrame(() => m.classList.add('open'));
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  const m = document.getElementById('modal');
+  m.classList.remove('open');
+  setTimeout(() => { m.style.display = 'none'; }, 350);
+  document.body.style.overflow = '';
+}
+
+function renderModal() {
+  if (!currentRoom) return;
+  document.getElementById('modalEyebrow').textContent = 'SPACE ' + (currentRoom.num || '');
+  document.getElementById('modalTitle').textContent = currentRoom.name_tr;
+
+  const planWrap = document.getElementById('modalPlanWrap');
+  if (currentRoom.plan) {
+    document.getElementById('modalPlan').src = currentRoom.plan;
+    planWrap.style.display = '';
+  } else {
+    planWrap.style.display = 'none';
+  }
+
+  const tabsEl = document.getElementById('modalTabs');
+  tabsEl.innerHTML = '';
+  if (currentRoom.images.length > 0 || currentRoom.subs.length === 0) {
+    const mainTab = document.createElement('button');
+    mainTab.className = 'modal-tab' + (currentSubKey === null ? ' active' : '');
+    mainTab.innerHTML = '<span>' + currentRoom.name_tr + '</span><span class="modal-tab-count">' +
+      currentRoom.images.length + '</span>';
+    mainTab.addEventListener('click', () => { currentSubKey = null; renderModal(); });
+    tabsEl.appendChild(mainTab);
+  }
+  currentRoom.subs.forEach(sub => {
+    const t = document.createElement('button');
+    t.className = 'modal-tab' + (currentSubKey === sub.slug ? ' active' : '');
+    t.innerHTML = '<span>' + sub.name_tr + '</span><span class="modal-tab-count">' +
+      sub.images.length + '</span>';
+    t.addEventListener('click', () => { currentSubKey = sub.slug; renderModal(); });
+    tabsEl.appendChild(t);
+  });
+
+  let imgs;
+  if (currentSubKey === null) {
+    imgs = currentRoom.images;
+  } else {
+    const sub = currentRoom.subs.find(s => s.slug === currentSubKey);
+    imgs = sub ? sub.images : [];
+  }
+  currentImages = imgs;
+  const galleryEl = document.getElementById('modalGallery');
+  galleryEl.innerHTML = '';
+  imgs.forEach((src, i) => {
+    const item = document.createElement('div');
+    item.className = 'gallery-item fade-in';
+    item.style.animationDelay = (i * 0.03) + 's';
+    item.innerHTML = '<img src="' + src + '" alt="" loading="lazy" />';
+    item.addEventListener('click', () => openLightbox(i));
+    galleryEl.appendChild(item);
+  });
+}
+
+/* ---------- LIGHTBOX ---------- */
+function setupLightbox() {
+  document.getElementById('lbClose').addEventListener('click', closeLightbox);
+  document.getElementById('lbPrev').addEventListener('click', () => navLightbox(-1));
+  document.getElementById('lbNext').addEventListener('click', () => navLightbox(1));
+  document.addEventListener('keydown', (e) => {
+    if (!document.getElementById('lightbox').classList.contains('open')) return;
+    if (e.key === 'ArrowLeft') navLightbox(-1);
+    if (e.key === 'ArrowRight') navLightbox(1);
+  });
+  document.getElementById('lightbox').addEventListener('click', (e) => {
+    if (e.target.id === 'lightbox') closeLightbox();
+  });
+}
+
+function openLightbox(i) {
+  lightboxIdx = i;
+  showLightboxImg();
+  const lb = document.getElementById('lightbox');
+  lb.style.display = 'flex';
+  requestAnimationFrame(() => lb.classList.add('open'));
+}
+
+function closeLightbox() {
+  const lb = document.getElementById('lightbox');
+  lb.classList.remove('open');
+  setTimeout(() => { lb.style.display = 'none'; }, 300);
+}
+
+function navLightbox(dir) {
+  lightboxIdx = (lightboxIdx + dir + currentImages.length) % currentImages.length;
+  showLightboxImg();
+}
+
+function showLightboxImg() {
+  document.getElementById('lbImg').src = currentImages[lightboxIdx];
+  document.getElementById('lbIdx').textContent = lightboxIdx + 1;
+  document.getElementById('lbTotal').textContent = currentImages.length;
+}
+</script>
+
+</body>
+</html>
